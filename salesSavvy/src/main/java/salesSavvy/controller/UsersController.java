@@ -3,6 +3,7 @@ package salesSavvy.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import salesSavvy.dto.LoginData;
 import salesSavvy.entity.Users;
 import salesSavvy.service.UsersService;
 
@@ -21,6 +22,11 @@ public class UsersController {
 	public String signUp(@RequestBody Users user) {
 		System.out.println(user);
 		return service.addUser(user);
+	}
+	
+	@PostMapping("/signIn")
+	public String signIn(@RequestBody LoginData data) {	
+		return service.validate(data);
 	}
 	
 }
