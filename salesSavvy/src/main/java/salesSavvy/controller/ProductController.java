@@ -32,4 +32,16 @@ public class ProductController {
 		return service.getAllProducts();
 	}
 	
+	@PostMapping("/deleteProduct")
+	public String deleteProduct(@RequestParam Long id) {
+		return service.deleteProduct(id);
+	}
+	
+	@PostMapping("/updateProduct")
+	public String updateProduct(@RequestBody Product prod) {
+		return service.updateProduct(prod);
+	}
+	
+	
+	
 }

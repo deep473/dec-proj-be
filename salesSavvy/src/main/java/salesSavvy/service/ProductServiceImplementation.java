@@ -24,4 +24,16 @@ public class ProductServiceImplementation implements ProductService{
 	public List<Product> getAllProducts() {
 		return repo.findAll();
 	}
+
+	@Override
+	public String deleteProduct(Long id) {
+		repo.deleteById(id);
+		return "success";
+	}
+
+	@Override
+	public String updateProduct(Product prod) {
+		repo.save(prod);
+		return "success";
+	}
 }

@@ -1,9 +1,11 @@
 package salesSavvy.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Users {
@@ -16,6 +18,23 @@ public class Users {
 	String gender;
 	String dob;
 	String role;
+	@OneToOne(
+	    mappedBy = "user",
+	    cascade = CascadeType.ALL,
+	    orphanRemoval = true
+	)
+	Cart cart;
+
+	public Cart getCart() {
+	    return cart;
+	}
+	public void setCart(Cart cart) {
+	    this.cart = cart;
+	    if (cart.getUser() != this) {
+	        cart.setUser(this);
+	    }
+	}
+
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub

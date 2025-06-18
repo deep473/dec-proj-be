@@ -8,4 +8,6 @@ public interface ProductService {
 
 	String addProduct(Product prod);
 	List<Product> getAllProducts();
+	String deleteProduct(Long id);
+	String updateProduct(Product prod);
 }
